@@ -17,3 +17,7 @@ StateMachine:
 https://github.com/erproxy/RestTest/tree/main/RestTest/Assets/Scripts/Models/DataModels
 https://github.com/erproxy/RestTest/blob/main/RestTest/Assets/Scripts/Tools/GameTools/JsonSerialization.cs
 Все модельки данных имеют вид структур.
+
+Загрузка Сцен:
+Загрузка сцен происходит благодаря модели котроллера который реагирует на изменения в стейт машине - https://github.com/erproxy/RestTest/blob/main/RestTest/Assets/Scripts/Models/Controllers/ScenesControllerModel.cs
+И благодаря MultiSceneManager который загружает сцены аддитивно - https://github.com/erproxy/RestTest/blob/main/RestTest/Assets/Scripts/RestTest/MultiScene/MultiSceneManager.cs
