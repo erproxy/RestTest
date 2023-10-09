@@ -1,12 +1,11 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Views
 {
     public class EnemyUnitView : MonoBehaviour
     {
-        [SerializeField] private DOTweenAnimation _hitTween;
+        //[SerializeField] private DOTweenAnimation _hitTween;
         [SerializeField] private Slider _healthBar;
 
         public void SetHealthBar(float value)
@@ -16,7 +15,7 @@ namespace Views
         
         public void SetHit()
         {
-            _hitTween.DORestart();
+        //    _hitTween.DORestart();
         }
     }
 }

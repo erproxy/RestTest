@@ -1,5 +1,5 @@
 ﻿using System;
-using DG.Tweening;
+using Cysharp.Threading.Tasks;
 using Tools.GameTools;
 using Tools.UiManager;
 using UnityEngine;
@@ -8,7 +8,7 @@ namespace Ui.Windows
 {
     public class FadeWindow : Window
     {
-        [SerializeField] private DOTweenAnimation _doTweenAnimation;
+       // [SerializeField] private DOTweenAnimation _doTweenAnimation;
 
         private Action _fadeSceneDelegate;
         protected override void OnDeactivate()
@@ -17,28 +17,32 @@ namespace Ui.Windows
             _fadeSceneDelegate = null;
         }
 
-        public void OpenFade(Action endBack = null)
+        public async UniTask OpenFade(Action endBack = null)
         {
             _fadeSceneDelegate = endBack;
-            _doTweenAnimation.DORestartById(StringsHelper.Helper.Open);
-            _doTweenAnimation.DOPlayById(StringsHelper.Helper.Open);
+            await UniTask.Delay(1000);
+            EndOpenFade();
+            // _doTweenAnimation.DORestartById(StringsHelper.Helper.Open);
+            // _doTweenAnimation.DOPlayById(StringsHelper.Helper.Open);
         }
 
-        public void CloseFade(Action endBack = null)
+        public async UniTask CloseFade(Action endBack = null)
         {
             _fadeSceneDelegate = endBack;
-            _doTweenAnimation.DORestartById(StringsHelper.Helper.Close);
-            _doTweenAnimation.DOPlayById(StringsHelper.Helper.Close);
+            await UniTask.Delay(1000);
+            EndCloseFade();
+            // _doTweenAnimation.DORestartById(StringsHelper.Helper.Close);
+            // _doTweenAnimation.DOPlayById(StringsHelper.Helper.Close);
         }
         
-        public void EndOpenFade()
+        private void EndOpenFade()
         {
             _fadeSceneDelegate?.Invoke();
             Debug.Log("Open scene Fade ended");
             _manager.Hide(this);
         }
         
-        public void EndCloseFade()
+        private void EndCloseFade()
         {
             _fadeSceneDelegate?.Invoke();
             Debug.Log("Close scene Fade ended");
